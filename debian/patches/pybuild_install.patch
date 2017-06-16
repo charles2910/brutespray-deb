@@ -12,7 +12,7 @@ Last-Update: 2017-06-16
 +
 +setup(name='brutespray',
 +      version='1.5',
-+      license='MIT/X11 (BSD like)',
++      license='MIT/X11)',
 +      py_modules=['argcomplete'],
 +      description='Bruteforce tool working with ',
 +      author='Stephane Neveu',
