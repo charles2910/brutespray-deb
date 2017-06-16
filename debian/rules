@@ -12,7 +12,7 @@ override_dh_install:
 #Building manpages
 override_dh_auto_build:
 	dh_auto_build
-	ronn -r $(CURDIR)/debian/brutespray.8.ronn
+	ronn -r $(CURDIR)/debian/brutespray.1.ronn
 
 
 %:
