@@ -9,5 +9,11 @@ override_dh_install:
 	#rm -rf $(CURDIR)/debian/openscap-daemon/usr/lib/python3/dist-packages/openscap_daemon/__pycache__
 	#rm -rf $(CURDIR)/debian/openscap-daemon/usr/lib/python3/dist-packages/openscap_daemon/cve_scanner/__pycache__
 
+#Building manpages
+override_dh_auto_build:
+	dh_auto_build
+	ronn -r $(CURDIR)/debian/brutespray.8.ronn
+
+
 %:
 	dh $@ --with python2 --buildsystem=pybuild
