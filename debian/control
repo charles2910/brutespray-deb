@@ -1,0 +1,23 @@
+Source: brutespray
+Section: net
+Priority: extra
+Maintainer: Debian Security Tools Packaging Team <pkg-security-team@lists.alioth.debian.org>
+Uploaders: NEVEU Stephane <stefneveu@gmail.com>
+Build-Depends:
+ debhelper (>=10),
+ ruby-ronn,
+ dh-python
+Homepage: https://github.com/x90skysn3k/brutespray
+Standards-Version: 3.9.8
+Vcs-Git: https://github.com/r3dlight/brutespray.git
+Vcs-Browser: https://github.com/r3dlight/brutespray
+
+Package: brutespray
+Depends: ${misc:Depends},
+         ${shlibs:Depends},
+	 python-argcomplete,
+	 lsb-base (>=3.0-6)
+Architecture: any
+Description: BruteSpray bruteforce tool
+ BruteSpray takes nmap GNMAP/XML output and automatically brute-forces services with default credentials using Medusa.
+ BruteSpray can even find non-standard ports by using the -sV inside Nmap.
