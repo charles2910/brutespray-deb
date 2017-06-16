@@ -1,4 +1,4 @@
 version=4
-   https://github.com/x90skysn3k/brutespraytags \
+   https://github.com/x90skysn3k/brutespray/tags \
    (?:.*?/)?brutespray-?(\d[\d.]*)\.tar\.gz Debian uupdate
 
