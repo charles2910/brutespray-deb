@@ -19,7 +19,7 @@ Depends: ${misc:Depends},
 	 python-argcomplete,
 	 lsb-base (>=3.0-6)
 Architecture: any
-Description: python bruteforce tool 
- This python script takes nmap GNMAP/XML output and automatically brute-forces 
+Description: Python bruteforce tool 
+ This Python script takes nmap GNMAP/XML output and automatically brute-forces 
  services with default credentials using Medusa.
  BruteSpray can even find non-standard ports by using the -sV inside Nmap.
