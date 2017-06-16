@@ -6,7 +6,8 @@ Uploaders: NEVEU Stephane <stefneveu@gmail.com>
 Build-Depends:
  debhelper (>=10),
  ruby-ronn,
- dh-python
+ dh-python,
+ python (>=2.7)
 Homepage: https://github.com/x90skysn3k/brutespray
 Standards-Version: 3.9.8
 Vcs-Git: https://github.com/r3dlight/brutespray.git

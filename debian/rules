@@ -2,6 +2,7 @@
 
 # redirect module to correct dist-packages dir
 export PYBUILD_INSTALL_ARGS=--install-lib=/usr/lib/python2.7/dist-packages
+export PYBUILD_SYSTEM=distutils
 
 override_dh_install:
 	dh_install -O--buildsystem=pybuild
