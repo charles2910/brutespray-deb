@@ -10,6 +10,7 @@ Build-Depends:
  python (>=2.7)
 Homepage: https://github.com/x90skysn3k/brutespray
 Standards-Version: 3.9.8
+XS-Python-Version: >= 2.7
 Vcs-Git: https://github.com/r3dlight/brutespray.git
 Vcs-Browser: https://github.com/r3dlight/brutespray
 
