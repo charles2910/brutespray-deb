@@ -4,10 +4,15 @@
 override_dh_auto_clean:
 	[ ! -e setup.py ] || dh_auto_clean
 
+
+override_dh_install:
+	dh_install
+	mv $(CURDIR)/debian/brutespray/usr/bin/brutespray.py $(CURDIR)/debian/brutespray/usr/bin/brutespray
+
 #Building manpages
-override_dh_auto_build:
-	dh_auto_build
+override_dh_installman:
 	ronn -r $(CURDIR)/debian/brutespray.1.ronn
+	dh_installman
 
 %:
 	dh $@ --with python2 --buildsystem=pybuild
