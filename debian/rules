@@ -1,17 +1,13 @@
 #!/usr/bin/make -f
 
-# redirect module to correct dist-packages dir
-export PYBUILD_NAME = brutespray
-export PYBUILD_INSTALL_ARGS=--install-lib=/usr/lib/python2.7/dist-packages
-#export PYBUILD_SYSTEM=distutils
+#No setup.py available in sources, will push a merge request
+override_dh_auto_clean:
+	[ ! -e setup.py ] || dh_auto_clean
 
 #Building manpages
 override_dh_auto_build:
 	dh_auto_build
 	ronn -r $(CURDIR)/debian/brutespray.1.ronn
-
-override_dh_install:
-	dh_install -O--buildsystem=pybuild
 
 %:
 	dh $@ --with python2 --buildsystem=pybuild
