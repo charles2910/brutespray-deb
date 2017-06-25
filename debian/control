@@ -18,9 +18,9 @@ Package: brutespray
 Depends: 
   ${misc:Depends},
   ${shlibs:Depends},
-   python,
-   python-argcomplete,
-   lsb-base (>=3.0-6)
+  python,
+  python-argcomplete,
+  lsb-base (>=3.0-6)
 Architecture: any
 Description: Python bruteforce tool 
  This Python script takes nmap GNMAP/XML output and automatically brute-forces 
