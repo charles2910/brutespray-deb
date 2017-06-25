@@ -15,10 +15,12 @@ Vcs-Git: https://github.com/r3dlight/brutespray.git
 Vcs-Browser: https://github.com/r3dlight/brutespray
 
 Package: brutespray
-Depends: ${misc:Depends},
-         ${shlibs:Depends},
-	 python-argcomplete,
-	 lsb-base (>=3.0-6)
+Depends: 
+  ${misc:Depends},
+  ${shlibs:Depends},
+   python,
+   python-argcomplete,
+   lsb-base (>=3.0-6)
 Architecture: any
 Description: Python bruteforce tool 
  This Python script takes nmap GNMAP/XML output and automatically brute-forces 
