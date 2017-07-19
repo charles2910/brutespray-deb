@@ -7,23 +7,22 @@ Build-Depends:
  debhelper (>=10),
  ruby-ronn,
  dh-python,
- python (>=2.7)
+ ${python:Depends} 
 Homepage: https://github.com/x90skysn3k/brutespray
-Standards-Version: 3.9.8
-XS-Python-Version: >= 2.7
-Vcs-Git: https://github.com/r3dlight/brutespray.git
-Vcs-Browser: https://github.com/r3dlight/brutespray
+Standards-Version: 4.0.0
+Vcs-Git: https://anonscm.debian.org/cgit/pkg-security/brutespray.git
+Vcs-Browser: https://anonscm.debian.org/cgit/pkg-security/brutespray.git/
 
 Package: brutespray
 Depends: 
   ${misc:Depends},
   ${shlibs:Depends},
-  python,
+  ${python:Depends}, 
   python-argcomplete,
 Recommends: 
   medusa,
   nmap
-Architecture: any
+Architecture: all
 Description: Python bruteforce tool 
  This Python script takes nmap GNMAP/XML output and automatically brute-forces 
  services with default credentials using Medusa.
