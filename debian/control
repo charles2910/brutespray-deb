@@ -20,7 +20,9 @@ Depends:
   ${shlibs:Depends},
   python,
   python-argcomplete,
-  lsb-base (>=3.0-6)
+Recommends: 
+  medusa,
+  nmap
 Architecture: any
 Description: Python bruteforce tool 
  This Python script takes nmap GNMAP/XML output and automatically brute-forces 
