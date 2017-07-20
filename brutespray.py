@@ -333,7 +333,7 @@ def parse_args():
 
     menu_group.add_argument('-c', '--continuous', help="keep brute-forcing after success", default=False, action='store_true')
     
-    menu_group.add_argument('-i', '--interactive', help="enable interactive mode", default=False, action='store_true')    
+    menu_group.add_argument('-i', '--interactive', help="interactive mode", default=False, action='store_true')    
 
     argcomplete.autocomplete(parser)    
    
@@ -371,6 +371,9 @@ if __name__ == "__main__":
     
     animate()
     
+    if services == {}:
+        print "\nNo brutable services found.\n Please check your Nmap file."
+ 
     to_scan = args.service.split(',')
     for service in services:
         if service in to_scan or to_scan == ['all']:
