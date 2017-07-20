@@ -17,7 +17,6 @@ Package: brutespray
 Depends: 
   ${misc:Depends},
   ${shlibs:Depends},
-  ${python:Depends}, 
   python-argcomplete,
 Recommends: 
   medusa,
