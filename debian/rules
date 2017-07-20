@@ -1,10 +1,5 @@
 #!/usr/bin/make -f
 
-#No setup.py available in sources, will push a merge request
-override_dh_auto_clean:
-	[ ! -e setup.py ] || dh_auto_clean
-
-
 override_dh_install:
 	dh_install
 	mv $(CURDIR)/debian/brutespray/usr/bin/brutespray.py $(CURDIR)/debian/brutespray/usr/bin/brutespray
