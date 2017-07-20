@@ -7,7 +7,7 @@ Build-Depends:
  debhelper (>=10),
  ruby-ronn,
  dh-python,
- ${python:Depends} 
+ python
 Homepage: https://github.com/x90skysn3k/brutespray
 Standards-Version: 4.0.0
 Vcs-Git: https://anonscm.debian.org/cgit/pkg-security/brutespray.git
