@@ -1,0 +1,24 @@
+Description: Update path for wordlist dir
+ This patch updates brutespray.py to search /usr/share/brutespray/wordlist.
+Author: Stephane Neveu
+Last-Update: 2017-07-21
+--- a/brutespray.py
++++ b/brutespray.py
+@@ -249,7 +249,7 @@
+ def brute(service,port,fname):  
+ 
+     if args.userlist is None and args.username is None:
+-        userlist = 'wordlist/'+service+'/user'
++        userlist = '/usr/share/brutespray/wordlist/'+service+'/user'
+         uarg = '-U'
+     elif args.userlist:
+         userlist = args.userlist
+@@ -259,7 +259,7 @@
+         uarg = '-u'
+ 
+     if args.passlist is None and args.password is None:
+-        passlist = 'wordlist/'+service+'/password'
++        passlist = '/usr/share/brutespray/wordlist/'+service+'/password'
+         parg = '-P'
+     elif args.passlist:
+         passlist = args.passlist
