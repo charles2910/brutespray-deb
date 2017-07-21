@@ -13,6 +13,7 @@ Specify service to attack:
   
 Number of medusa threads:  
   -t THREADS, --threads THREADS  
+ 
 Number of hosts to test concurrently:  
   -T HOSTS, --hosts HOSTS  
 
