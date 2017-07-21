@@ -1,6 +1,7 @@
 Description: Update path for wordlist dir
  This patch updates brutespray.py to search /usr/share/brutespray/wordlist.
 Author: Stephane Neveu
+Forwarded: not-needed
 Last-Update: 2017-07-21
 --- a/brutespray.py
 +++ b/brutespray.py
