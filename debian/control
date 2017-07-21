@@ -18,9 +18,9 @@ Depends:
   ${misc:Depends},
   ${shlibs:Depends},
   ${python:Depends},
-  python-argcomplete,
-Recommends: 
   medusa,
+  python-argcomplete
+Recommends: 
   nmap
 Architecture: all
 Description: Python bruteforce tool 
