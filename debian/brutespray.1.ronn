@@ -3,27 +3,36 @@ brutespray(8) -- BruteSpray takes nmap GNMAP/XML output and automatically brute-
 
 ## SYNOPSIS
 
-`brutespray` [Usage]: brutespray [-h] -f FILE [-s SERVICE] [-t THREADS] [-T HOSTS]  
-                                 [-U USERLIST] [-P PASSLIST] [-u USERNAME] [-p PASSWORD] [-c]  
-                                 [-i].  
+`brutespray` [Usage]: brutespray [-h] -f FILE [-s SERVICE] [-t THREADS] [-T HOSTS] [-U USERLIST] [-P PASSLIST] [-u USERNAME] [-p PASSWORD] [-c] [-i].  
 
-  -f FILE, --file FILE  GNMAP or XML file to parse  
-  -s SERVICE, --service SERVICE  
-                        specify service to attack  
+  GNMAP or XML file to parse:  
+  -f FILE, --file FILE  
+
+  Specify service to attack:  
+  -s SERVICE, --service SERVICE
+  
+  Number of medusa threads:  
   -t THREADS, --threads THREADS  
-                        number of medusa threads  
+  Number of hosts to test concurrently:  
   -T HOSTS, --hosts HOSTS  
-                        number of hosts to test concurrently  
+
+  Reference a custom username file:  
   -U USERLIST, --userlist USERLIST  
-                        reference a custom username file  
+
+  Reference a custom password file:  
   -P PASSLIST, --passlist PASSLIST  
-                        reference a custom password file  
+
+  Specify a single username:  
   -u USERNAME, --username USERNAME  
-                        specify a single username  
+
+  Specify a single password:  
   -p PASSWORD, --password PASSWORD  
-                        specify a single password  
-  -c, --continuous      keep brute-forcing after success  
-  -i, --interactive     interactive mode  
+
+  Keep brute-forcing after success:  
+  -c, --continuous  
+
+  Interactive mode:  
+  -i, --interactive  
 
 
 Command: brutespray -h
