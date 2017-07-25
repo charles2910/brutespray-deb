@@ -14,34 +14,34 @@ with default credentials using Medusa.
 BruteSpray can even find non-standard ports by using the -sV inside Nmap.
 
 
-  * `-f` FILE, `--file` FILE  
+   * `-f` FILE, `--file` FILE  
     GNMAP or XML file to parse  
 
-  * `-s` SERVICE, `--service` SERVICE  
+   * `-s` SERVICE, `--service` SERVICE  
     Specify service to attack  
   
-  * `-t` THREADS, `--threads` THREADS  
+   * `-t` THREADS, `--threads` THREADS  
     Number of medusa threads  
  
-  * `-T` HOSTS, `--hosts` HOSTS  
+   * `-T` HOSTS, `--hosts` HOSTS  
     Number of hosts to test concurrently  
 
-  * `-U` USERLIST, `--userlist` USERLIST  
+   * `-U` USERLIST, `--userlist` USERLIST  
     Reference a custom username file  
 
-  * `-P` PASSLIST, `--passlist` PASSLIST  
+   * `-P` PASSLIST, `--passlist` PASSLIST  
     Reference a custom password file  
 
-  * `-u` USERNAME, `--username` USERNAME  
+   * `-u` USERNAME, `--username` USERNAME  
     Specify a single username  
 
-  * `-p` PASSWORD, `--password` PASSWORD  
+   * `-p` PASSWORD, `--password` PASSWORD  
     Specify a single password  
 
-  * `-c`, `--continuous`  
+   * `-c`, `--continuous`  
     Keep brute-forcing after success  
 
-  * `-i`, `--interactive`  
+   * `-i`, `--interactive`  
     Interactive mode  
 
 
