@@ -3,7 +3,7 @@ brutespray(8) -- Python bruteforce tool
 
 ## SYNOPSIS
 
-`brutespray` [Usage]: brutespray [-h] -f FILE [-s SERVICE] [-t THREADS] [-T HOSTS] [-U USERLIST] [-P PASSLIST] [-u USERNAME] [-p PASSWORD] [-c] [-i].  
+`brutespray` [Usage]: brutespray [-h] -f FILE [-o OUTPUT] [-s SERVICE] [-t THREADS] [-T HOSTS] [-U USERLIST] [-P PASSLIST] [-u USERNAME] [-p PASSWORD] [-c] [-i].  
 
 
 ## DESCRIPTION
@@ -16,6 +16,9 @@ BruteSpray can even find non-standard ports by using the -sV inside Nmap.
 
    * `-f` FILE, `--file` FILE  
     GNMAP or XML file to parse  
+
+   * `-o` OUTPUT, `--output` OUTPUT  
+    Directory containing successful attempts  
 
    * `-s` SERVICE, `--service` SERVICE  
     Specify service to attack  
