@@ -1,3 +1,7 @@
+Description: Update path for wordlist and brutespray-output dirs
+ This patch updates brutespray.py to use /usr/share/brutespray/.
+Author: Stephane Neveu
+Forwarded: not-needed
 --- a/brutespray.py
 +++ b/brutespray.py
 @@ -251,7 +251,7 @@
@@ -5,7 +9,7 @@
  
      if args.userlist is None and args.username is None:
 -        userlist = 'wordlist/'+service+'/user'
-+        userlist = '/usr/share/bruteforce/wordlist/'+service+'/user'
++        userlist = '/usr/share/brutespray/wordlist/'+service+'/user'
          uarg = '-U'
      elif args.userlist:
          userlist = args.userlist
@@ -14,7 +18,7 @@
  
      if args.passlist is None and args.password is None:
 -        passlist = 'wordlist/'+service+'/password'
-+        passlist = '/usr/share/bruteforce/wordlist/'+service+'/password'
++        passlist = '/usr/share/brutespray/wordlist/'+service+'/password'
          parg = '-P'
      elif args.passlist:
          passlist = args.passlist
