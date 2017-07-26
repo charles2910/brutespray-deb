@@ -1,4 +1,4 @@
-Description: Update path for wordlist and brutespray-output dirs
+Description: Update path for wordlist directory
  This patch updates brutespray.py to use /usr/share/brutespray/.
 Author: Stephane Neveu
 Forwarded: not-needed
