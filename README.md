@@ -6,7 +6,7 @@ Inspired by: Leon Johnson/@sho-luv
 
 Credit to Medusa: JoMo-Kun / Foofus Networks - http://www.foofus.net
 
-#### Version - 1.5.2
+#### Version - 1.5.3
 
 # Demo
 
@@ -20,6 +20,10 @@ BruteSpray takes nmap GNMAP/XML output and automatically brute-forces services w
 # Installation
 
 ```pip install -r requirements.txt```
+
+On Kali:
+
+```apt-get install brutespray```
 
 # Usage
 First do an nmap scan with ```-oG nmap.gnmap``` or ```-oX nmap.xml```.
@@ -84,6 +88,8 @@ Command: ```python brutespray.py --file nmap.xml -i```
 * vmauthd
 
 # Changelog
+* v1.5.3
+    * adjustments to wordlists
 * v1.5.2
     * change tmp and output directory behavior
 * v1.5.1
