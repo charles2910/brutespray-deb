@@ -1,2 +1,2 @@
-wordlist /usr/share/brutespray/
 brutespray.py /usr/bin/
+wordlist /usr/share/brutespray/
