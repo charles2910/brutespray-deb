@@ -1,3 +1,13 @@
+brutespray (1.5.3-1) unstable; urgency=medium
+
+  * Remove trailing whitespace
+  * Bump debian standards version to 4.1.1
+  * wrap-and-sort
+  * Add default branch to gbp.conf
+  * New upstream version 1.5.3
+
+ -- Robert Haist <rhaist@mailbox.org>  Tue, 17 Oct 2017 16:04:56 +0200
+
 brutespray (1.5.2-1) unstable; urgency=medium
 
   * Initial release (Closes: #864900)
