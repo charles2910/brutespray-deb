@@ -1,3 +1,7 @@
+brutespray (1.6.0-2) unstable; urgency=medium
+
+  * update Build-Depends: ruby-ronn -> ronn.
+
 brutespray (1.6.0-1) unstable; urgency=medium
 
   * Team upload.
