@@ -1,6 +1,14 @@
 brutespray (1.6.0-2) unstable; urgency=medium
 
-  * update Build-Depends: ruby-ronn -> ronn.
+  [ Raphaël Hertzog ]
+  * Update team maintainer address to Debian Security Tools
+    <team+pkg-security@tracker.debian.org>
+  * Update Vcs-Git and Vcs-Browser for the move to salsa.debian.org
+
+  [ Stephane Neveu ]
+  * update Build-Depends: ruby-ronn -> ronn. Closes: #903076
+
+ -- Raphaël Hertzog <hertzog@debian.org>  Sun, 08 Jul 2018 21:42:06 +0200
 
 brutespray (1.6.0-1) unstable; urgency=medium
 
