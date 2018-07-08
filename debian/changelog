@@ -1,6 +1,8 @@
 brutespray (1.6.0-2) unstable; urgency=medium
 
   [ Raphaël Hertzog ]
+  * Team upload.
+  * Bump Standards-Version to 4.1.5.
   * Update team maintainer address to Debian Security Tools
     <team+pkg-security@tracker.debian.org>
   * Update Vcs-Git and Vcs-Browser for the move to salsa.debian.org
