@@ -6,7 +6,7 @@ Inspired by: Leon Johnson/@sho-luv
 
 Credit to Medusa: JoMo-Kun / Foofus Networks - http://www.foofus.net
 
-#### Version - 1.6.0
+#### Version - 1.6.4
 
 # Demo
 
@@ -36,7 +36,7 @@ Command: ```python brutesrpay.py --file nmap.xml```
 
 Command: ```python brutespray.py --file nmap.xml -i```
 
-<img src="https://i.imgur.com/25rfMAB.png" width="450">
+<img src="https://i.imgur.com/PgXEw36.png" width="450">
 
 ## Examples
 
@@ -89,19 +89,4 @@ Command: ```python brutespray.py --file nmap.xml -i```
 * snmp
 
 # Changelog
-* v1.6.0
-    * added support for SNMP
-* v1.5.3
-    * adjustments to wordlists
-* v1.5.2
-    * change tmp and output directory behavior
-* v1.5.1
-    * added check for no services
-* v1.5
-    * added interactive mode
-* v1.4
-    * added ability to use nmap XML 
-* v1.3
-    * added the ability to stop on success
-    * added the ability to reference custom userlists and passlists
-    * added the ability to specify specific users & passwords
+Changelog notes are available at [CHANGELOG.md](https://github.com/x90skysn3k/brutespray/blob/master/CHANGELOG.md)
