@@ -1,3 +1,13 @@
+brutespray (1.6.4-1) unstable; urgency=medium
+
+  * Team upload
+  * New upstream version 1.6.4
+  * Bump Debhelper compat level
+  * Bump Standards-Version
+  * Update patch
+
+ -- Hilko Bengen <bengen@debian.org>  Sun, 27 Jan 2019 22:16:35 +0100
+
 brutespray (1.6.0-2) unstable; urgency=medium
 
   [ Raphaël Hertzog ]
