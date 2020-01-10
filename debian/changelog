@@ -1,14 +1,15 @@
-brutespray (1.6.4-1.1) UNRELEASED; urgency=medium
+brutespray (1.6.6-0.1) UNRELEASED; urgency=medium
 
   [ Emmanuel Arias ]
   * Non-maintainer upload.
   * Remove Python2 support (Closes: #936243)
   * d/gbp.conf: Add upstream-branch according to the current salsa tree
+  * New upstream version 1.6.6
 
   [ Samuel Henrique ]
   * Add salsa-ci.yml
 
- -- Emmanuel Arias <eamanu@yaerobi.com>  Fri, 10 Jan 2020 18:22:52 -0300
+ -- Emmanuel Arias <eamanu@yaerobi.com>  Fri, 10 Jan 2020 18:31:59 -0300
 
 brutespray (1.6.4-1) unstable; urgency=medium
 
