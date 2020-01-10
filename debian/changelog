@@ -5,6 +5,7 @@ brutespray (1.6.6-0.1) UNRELEASED; urgency=medium
   * Remove Python2 support (Closes: #936243)
   * d/gbp.conf: Add upstream-branch according to the current salsa tree
   * New upstream version 1.6.6
+  * Remove intall.patch patch is no longer applied
 
   [ Samuel Henrique ]
   * Add salsa-ci.yml
