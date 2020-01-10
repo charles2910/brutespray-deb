@@ -3,6 +3,7 @@ brutespray (1.6.4-1.1) UNRELEASED; urgency=medium
   [ Emmanuel Arias ]
   * Non-maintainer upload.
   * Remove Python2 support (Closes: #936243)
+  * d/gbp.conf: Add upstream-branch according to the current salsa tree
 
   [ Samuel Henrique ]
   * Add salsa-ci.yml
