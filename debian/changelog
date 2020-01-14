@@ -1,16 +1,22 @@
-brutespray (1.6.6-0.1) UNRELEASED; urgency=medium
+brutespray (1.6.6-1) unstable; urgency=medium
+
+  * Team upload
 
   [ Emmanuel Arias ]
-  * Non-maintainer upload.
   * Remove Python2 support (Closes: #936243)
   * d/gbp.conf: Add upstream-branch according to the current salsa tree
   * New upstream version 1.6.6
-  * Remove intall.patch patch is no longer applied
+  * Remove install.patch, already applied upstream.
 
   [ Samuel Henrique ]
   * Add salsa-ci.yml
 
- -- Emmanuel Arias <eamanu@yaerobi.com>  Fri, 10 Jan 2020 18:31:59 -0300
+  [ Raphaël Hertzog ]
+  * Use debhelper-compat in Build-Depends instead of debian/compat
+  * Drop ${shlibs:Depends} as this is an "Architecture: all" package
+  * Bump Standards-Version to 4.4.1
+
+ -- Raphaël Hertzog <raphael@offensive-security.com>  Tue, 14 Jan 2020 14:56:37 +0100
 
 brutespray (1.6.4-1) unstable; urgency=medium
 
