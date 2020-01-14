@@ -13,8 +13,7 @@ Package: brutespray
 Depends: medusa,
          python3-argcomplete,
          ${misc:Depends},
-         ${python3:Depends},
-         ${shlibs:Depends}
+         ${python3:Depends}
 Recommends: nmap
 Architecture: all
 Description: Python bruteforce tool
