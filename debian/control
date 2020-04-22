@@ -2,7 +2,7 @@ Source: brutespray
 Section: net
 Priority: optional
 Maintainer: Debian Security Tools <team+pkg-security@tracker.debian.org>
-Uploaders: NEVEU Stephane <stefneveu@gmail.com>
+Uploaders: Stephane NEVEU <stefneveu@gmail.com>
 Build-Depends: debhelper-compat (= 12), dh-python, python3, ronn
 Homepage: https://github.com/x90skysn3k/brutespray
 Standards-Version: 4.4.1
