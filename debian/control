@@ -1,6 +1,7 @@
 Source: brutespray
 Section: net
 Priority: optional
+Rules-Requires-Root: no
 Maintainer: Debian Security Tools <team+pkg-security@tracker.debian.org>
 Uploaders: Stephane NEVEU <stefneveu@gmail.com>
 Build-Depends: debhelper-compat (= 12), dh-python, python3, ronn
