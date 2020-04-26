@@ -3,7 +3,7 @@ Section: net
 Priority: optional
 Rules-Requires-Root: no
 Maintainer: Debian Security Tools <team+pkg-security@tracker.debian.org>
-Uploaders: Stephane NEVEU <stefneveu@gmail.com>
+Uploaders: Stephane Neveu <stefneveu@gmail.com>
 Build-Depends: debhelper-compat (= 12), dh-python, python3, ronn
 Homepage: https://github.com/x90skysn3k/brutespray
 Standards-Version: 4.5.0
