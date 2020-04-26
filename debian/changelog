@@ -1,8 +1,11 @@
-brutespray (1.6.7-1) unstable; urgency=medium
+brutespray (1.6.8-1) unstable; urgency=medium
 
-  * New upstream version 1.6.7
+  * New upstream version 1.6.8
+  * Bump to standards-version version 4.5.0
+  * Add Rules-Requires-Root: no
+  * Update Uploaders field to match changelog 
 
- -- Stephane Neveu <stefneveu@gmail.com>  Tue, 21 Apr 2020 18:24:50 +0200
+ -- Stephane Neveu <stefneveu@gmail.com>  Sun, 26 Apr 2020 08:05:48 +0200
 
 brutespray (1.6.6-1) unstable; urgency=medium
 
