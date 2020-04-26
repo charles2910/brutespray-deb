@@ -6,7 +6,7 @@ brutespray (1.6.8-1) unstable; urgency=medium
   * Update Uploaders field to match changelog
   * Add Autopkgtest
 
- -- Stephane Neveu <stefneveu@gmail.com>  Sun, 26 Apr 2020 08:05:48 +0200
+ -- Stephane NEVEU <stefneveu@gmail.com>  Sun, 26 Apr 2020 08:05:48 +0200
 
 brutespray (1.6.6-1) unstable; urgency=medium
 
