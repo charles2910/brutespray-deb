@@ -4,6 +4,7 @@ brutespray (1.6.8-1) unstable; urgency=medium
   * Bump to standards-version version 4.5.0
   * Add Rules-Requires-Root: no
   * Update Uploaders field to match changelog
+  * Add Autopkgtest
 
  -- Stephane Neveu <stefneveu@gmail.com>  Sun, 26 Apr 2020 08:05:48 +0200
 
