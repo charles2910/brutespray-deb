@@ -1,19 +1,20 @@
 # BruteSpray
+![Supported Python versions](https://img.shields.io/badge/python-3.7+-blue.svg)
+![Version](https://img.shields.io/badge/Version-1.8-red)
 
-Created by: Shane Young/@x90skysn3k && Jacob Robles/@shellfail 
+
+Created by: Shane Young/@t1d3nio && Jacob Robles/@shellfail 
 
 Inspired by: Leon Johnson/@sho-luv
 
 Credit to Medusa: JoMo-Kun / Foofus Networks - http://www.foofus.net
-
-#### Version - 1.6.8
 
 # Demo
 
 https://youtu.be/C-CVLbSEe_g
 
 # Description
-BruteSpray takes nmap GNMAP/XML output or newline seperated JSONS and automatically brute-forces services with default credentials using Medusa. BruteSpray can even find non-standard ports by using the -sV inside Nmap.  
+BruteSpray takes Nmap GNMAP/XML output, newline separated JSON, Nexpose `XML Export` output or Nessus `.nessus` exports and automatically brute-forces services with default credentials using Medusa. BruteSpray finds non-standard ports, make sure to use `-sV` with Nmap.
 
 <img src="http://i.imgur.com/k9BDB5R.png" width="500">
 
@@ -26,7 +27,11 @@ On Kali:
 ```apt-get install brutespray```
 
 # Usage
-First do an nmap scan with ```-oG nmap.gnmap``` or ```-oX nmap.xml```.
+If using Nmap, scan with ```-oG nmap.gnmap``` or ```-oX nmap.xml```.
+
+If using Nexpose, export the template `XML Export`. 
+
+If using Nessus, export your `.nessus` file.
 
 Command: ```python brutespray.py -h```
 
@@ -97,6 +102,21 @@ Command: ```python brutespray.py --file nmap.xml -i```
 {"host":"127.0.0.1","port":"3306","service":"mysql"}
 {"host":"127.0.0.10","port":"3306","service":"mysql"}
 ...
+```
+If using Nexpose, export the template `XML Export`. 
+
+If using Nessus, export your `.nessus` file.
+
+# Combo Option
+When you specify a combo option `-C`, it will read the specified file and attempt the host:user:pass on each discovered service from Nmap. If you just want to specify only a username and password leave the host blank as shown below.
+```
+:user:pass
+:user1:pass1
+```
+or
+```
+127.0.0.1:user:pass
+127.0.0.10:user1:pass1
 ```
 
 # Changelog
