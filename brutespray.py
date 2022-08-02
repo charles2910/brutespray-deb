@@ -57,8 +57,8 @@ banner = colors.red + r"""
         ╚═════╝ ╚═╝  ╚═╝ ╚═════╝    ╚═╝   ╚══════╝╚══════╝╚═╝     ╚═╝  ╚═╝╚═╝  ╚═╝   ╚═╝   
                                                                                    
 """+'\n' \
-+ '\n brutespray.py v1.6.8' \
-+ '\n Created by: Shane Young/@x90skysn3k && Jacob Robles/@shellfail' \
++ '\n brutespray.py v1.8' \
++ '\n Created by: Shane Young/@t1d3nio && Jacob Robles/@shellfail' \
 + '\n Inspired by: Leon Johnson/@sho-luv' \
 + '\n Credit to Medusa: JoMo-Kun / Foofus Networks <jmk@foofus.net>\n' + colors.normal
 #ascii art by: Cara Pearson
@@ -82,7 +82,7 @@ def interactive():
         for serv in services:
             srv = serv
             for prt in services[serv]:
-                iplist = services[serv][prt]
+                iplist = set(services[serv][prt])
                 port = prt
                 plist = len(iplist)
                 print("Service: " + colors.green + str(serv) + colors.normal + " on port " + colors.red + str(port) + colors.normal + " with " + colors.red + str(plist) + colors.normal + " hosts")
@@ -120,6 +120,13 @@ def interactive():
                 if args.password == "":
                     args.password = None
 
+        if args.username is None and args.userlist is None:
+            combo = input(colors.lightblue + 'Enter a combolist you would like to use: ' + colors.red)
+            if combo == "y":
+                args.combo = input(colors.lightblue + 'Enter a combolist you would like to use: ' + colors.red)
+                if args.combo == "":
+                    args.combo = None
+
         if args.service == "":
             args.service = "all"
         if args.threads == "":
@@ -131,6 +138,7 @@ def interactive():
 
 NAME_MAP = {"ms-sql-s": "mssql",
             "microsoft-ds": "smbnt",
+            "cifs": "smbnt",
             "pcanywheredata": "pcanywhere",
             "postgresql": "postgres",
             "shell": "rsh",
@@ -152,7 +160,6 @@ def make_dic_gnmap():
                  'exec','login','microsoft-ds','smtp', 'smtps','submission',
                  'svn','iss-realsecure','snmptrap','snmp']
 
-
     port = None
     with open(args.file, 'r') as nmap_file:
         for line in nmap_file:
@@ -165,11 +172,8 @@ def make_dic_gnmap():
 
                 ip = re.findall( r'[0-9]+(?:\.[0-9]+){3}', line)
                 tmp_ports = matches.findall(line)
-
                 for tmp_port in tmp_ports:
-
                     name = NAME_MAP.get(name, name)
-
                     if name in services:
                         if tmp_port in services[name]:
                             services[name][tmp_port] += ip
@@ -177,6 +181,75 @@ def make_dic_gnmap():
                             services[name][tmp_port] = ip
                     else:
                         services[name] = {tmp_port:ip}
+
+    loading = True
+
+def make_dic_nexpose():
+    global loading
+    global services
+    supported = ['ssh','ftp','postgresql','telnet','mysql','ms-sql-s','rsh',
+                 'vnc','imap','imaps','nntp','pcanywheredata','pop3','pop3s',
+                 'exec','login','microsoft-ds','smtp','smtps','submission',
+                 'svn','iss-realsecure','snmptrap','snmp','cifs']
+    tree = ET.parse(args.file)
+    root = tree.getroot()
+    for node in root.iter('node'):
+        ipaddr = node.attrib['address']
+        for port in node.iter('endpoint'):
+            cstate = port.attrib['status']
+            tmp_port = port.attrib['port']
+            if cstate == "open":
+                try:
+                    name = port[0][0].attrib['name']
+                    iplist = ipaddr.split(',')
+                except:
+                    continue
+                name = name.lower()
+                if name in supported:
+                    name = NAME_MAP.get(name, name)
+                    if name in services:
+                        if tmp_port in services[name]:
+                            services[name][tmp_port] += iplist
+                        else:
+                            services[name][tmp_port] = iplist
+                    else:
+                        services[name] = {tmp_port:iplist}
+
+    loading = True
+
+def make_dic_nessus():
+    global loading
+    global services
+    supported = ['ssh','ftp','postgresql','telnet','mysql','ms-sql-s','rsh',
+                 'vnc','imap','imaps','nntp','pcanywheredata','pop3','pop3s',
+                 'exec','login','microsoft-ds','smtp','smtps','submission',
+                 'svn','iss-realsecure','snmptrap','snmp','cifs']
+    tree = ET.parse(args.file)
+    root = tree.getroot()
+    for host in root.iter('ReportHost'):
+        ipaddr = host.attrib['name']
+        for port in host.iter('ReportItem'):
+            cstate = "open"
+            tmp_port = port.attrib['port']
+            if tmp_port == '0':
+                cstate == "closed"
+                continue
+            if cstate == "open":
+                try:
+                    name = port.attrib['svc_name']
+                    iplist = ipaddr.split(',')
+                except:
+                    continue
+                name = name.lower()
+                if name in supported:
+                    name = NAME_MAP.get(name, name)
+                    if name in services:
+                        if tmp_port in services[name]:
+                            services[name][tmp_port] += iplist
+                        else:
+                                services[name][tmp_port] = iplist
+                    else:
+                        services[name] = {tmp_port:iplist}
 
     loading = True
 
@@ -241,32 +314,39 @@ def make_dic_json():
                 continue
     loading = True 
 
-def brute(service,port,fname,output):
-    if args.userlist is None and args.username is None:
+def brute(service,port,fname,output,auserlist,ausername,apasslist,apassword,acontinuous,ahosts,athreads,averbose,acombo,adebug):
+    if auserlist is None and ausername is None and acombo is None:
+
         userlist = '/usr/share/brutespray/wordlist/'+service+'/user'
         if not os.path.exists(userlist):
             userlist = 'wordlist/'+service+'/user'
         uarg = '-U'
-    elif args.userlist:
-        userlist = args.userlist
+    elif auserlist:
+        userlist = auserlist
         uarg = '-U'
-    elif args.username:
-        userlist = args.username
+    elif ausername:
+        userlist = ausername
         uarg = '-u'
+    elif acombo:
+        userlist = acombo
+        uarg = '-C'
 
-    if args.passlist is None and args.password is None:
+    if apasslist is None and apassword is None and acombo is None:
         passlist = '/usr/share/brutespray/wordlist/'+service+'/password'
         if not os.path.exists(passlist):
             passlist = 'wordlist/'+service+'/password'
         parg = '-P'
-    elif args.passlist:
-        passlist = args.passlist
+    elif apasslist:
+        passlist = apasslist
         parg = '-P'
-    elif args.password:
-        passlist = args.password
+    elif apassword:
+        passlist = apassword
         parg = '-p'
+    elif acombo:
+        parg = ''
+        passlist = ''
 
-    if args.continuous:
+    if acontinuous:
         cont = ''
     else:
         cont = '-F'
@@ -277,19 +357,19 @@ def brute(service,port,fname,output):
         aarg = ''
         auth = ''
 
-    p = subprocess.Popen(['medusa', '-b', '-H', fname, uarg, userlist, parg, passlist, '-M', service, '-t', args.threads, '-n', port, '-T', args.hosts, cont, aarg, auth], stdout=subprocess.PIPE, stderr=subprocess.STDOUT, bufsize=-1)
+    p = subprocess.Popen(['medusa', '-b', '-H', fname, uarg, userlist, parg, passlist, '-M', service, '-t', athreads, '-n', port, '-T', ahosts, cont, aarg, auth, '-v', averbose, '-w', adebug], stdout=subprocess.PIPE, stderr=subprocess.STDOUT, universal_newlines=True, bufsize=1)
+    
 
     out = "[" + colors.green + "+" + colors.normal + "] "
     output_file = output + '/' + port + '-' + service + '-success.txt'
-    
- 
-    for line in iter(p.stdout.readline, b''):
-        print(line.decode('utf-8').strip('\n'))
+
+    for line in p.stdout:
+        print(line.strip('\n'))
         sys.stdout.flush()
         time.sleep(0.0001)
-        if 'SUCCESS' in line.decode('utf-8'):
+        if 'SUCCESS' in line:
             f = open(output_file, 'a')
-            f.write(out + line.decode('utf-8'))
+            f.write(out + line)
             f.close()
 
 def animate():
@@ -316,18 +396,22 @@ def getInput(filename):
     in_format = None
     with open(filename) as f:
         line = f.readlines()
-        if filename.endswith("gnmap"):
-            in_format = "gnmap"
-        if filename.endswith("json"):
-            in_format = "json"
-        if filename.endswith("xml"):
-            in_format = "xml"
+        #if filename.endswith("gnmap"):
+        #    in_format = "gnmap"
+        #if filename.endswith("json"):
+        #    in_format = "json"
+        #if filename.endswith("xml"):
+        #    in_format = "xml"
         if '{' in line[0]:
             in_format = "json"
         if '# Nmap' in line[0] and not 'Nmap' in line[1]:
             in_format = "gnmap"
-        if '<?xml ' in line[0]:
+        if '<?xml ' in line[0] and 'nmaprun' in line[1]:
             in_format = "xml"
+        if '<NexposeReport ' in line[0]:
+            in_format = "xml_nexpose"
+        if '<NessusClientData' in line[1]:
+            in_format = "xml_nessus"
         if in_format is None:
             print('File is not correct format!\n')
             sys.exit(0)
@@ -342,7 +426,6 @@ def parse_args():
 
     menu_group = parser.add_argument_group(colors.lightblue + 'Menu Options' + colors.normal)
 
-    #menu_group.add_argument('-f', '--file', help="GNMAP or XML file to parse", required=False, default=None)
     menu_group.add_argument('-f', '--file', help="GNMAP, JSON or XML file to parse", required=False, default=None)
     menu_group.add_argument('-o', '--output', help="Directory containing successful attempts", default="brutespray-output")
     menu_group.add_argument('-s', '--service', help="specify service to attack", default="all")
@@ -350,12 +433,15 @@ def parse_args():
     menu_group.add_argument('-T', '--hosts', help="number of hosts to test concurrently", default="1")
     menu_group.add_argument('-U', '--userlist', help="reference a custom username file", default=None)
     menu_group.add_argument('-P', '--passlist', help="reference a custom password file", default=None)
+    menu_group.add_argument('-C', '--combo', help="specify a combo input (host:user:password)", default=None)
     menu_group.add_argument('-u', '--username', help="specify a single username", default=None)
     menu_group.add_argument('-p', '--password', help="specify a single password", default=None)
     menu_group.add_argument('-c', '--continuous', help="keep brute-forcing after success", default=False, action='store_true')
     menu_group.add_argument('-i', '--interactive', help="interactive mode", default=False, action='store_true')    
     menu_group.add_argument('-m', '--modules', help="dump a list of available modules to brute", default=False, action='store_true')    
     menu_group.add_argument('-q', '--quiet', help="supress banner", default=False, action='store_true')   
+    menu_group.add_argument('-v', '--verbose', help="verbose output from medusa [0-6], default=5", default="5")
+    menu_group.add_argument('-w', '--debug', help="debug error output from medusa [0-10], default=5", default="5")
 
     args = parser.parse_args()
 
@@ -374,7 +460,7 @@ if __name__ == "__main__":
     supported = ['ssh','ftp','telnet','vnc','mssql','mysql','postgresql','rsh',
                 'imap','nntp','pcanywhere','pop3',
                 'rexec','rlogin','smbnt','smtp',
-                'svn','vmauthd','snmp']
+                'svn','vmauthd','snmp','cifs']
     #temporary directory for ip addresses
 
     if args.modules is True:
@@ -405,6 +491,9 @@ if __name__ == "__main__":
         sys.stderr.write("Userlist given does not exist. Please check your file or path\n")
         exit(3)
 
+    if args.combo and not os.path.isfile(args.combo):
+        sys.stderr.write("Combolist given does not exist. Please check your file or path\n")
+
     if os.path.isfile(args.file):        
         try:
             t = threading.Thread(target=loading)
@@ -413,7 +502,9 @@ if __name__ == "__main__":
             {
                 "gnmap": make_dic_gnmap,
                 "xml":   make_dic_xml,
-                "json":  make_dic_json
+                "json":  make_dic_json,
+                "xml_nexpose": make_dic_nexpose,
+                "xml_nessus": make_dic_nessus
             }[in_format]()
         except:
             print("\nFormat failed!\n")
@@ -422,26 +513,26 @@ if __name__ == "__main__":
 
         if args.interactive is True:
             interactive()
-
+        
         animate()
 
         if services == {}:
-            print("\nNo brutable services found.\n Please check your Nmap file.")
+            print("\nNo brutable services found.\n Please check your file.")
     else:
         print("\nError loading file, please check your filename.")
-
+    
     to_scan = args.service.split(',')
     for service in services:
         if service in to_scan or to_scan == ['all']:
             for port in services[service]:
                 fname = tmppath + '/' +service + '-' + port
-                iplist = services[service][port]
+                iplist = set(services[service][port])
                 f = open(fname, 'w+')
                 for ip in iplist:
                     f.write(ip + '\n')
                 f.close()
-                brute_process = Process(target=brute, args=(service,port,fname,args.output))
+                brute_process = Process(target=brute, args=(service,port,fname,args.output,args.userlist,args.username,args.passlist,args.password,args.continuous,args.hosts,args.threads,args.verbose,args.combo,args.debug))
                 brute_process.start()
 
+
     #need to wait for all of the processes to run...
-    #shutil.rmtree(tmppath, ignore_errors=False, onerror=None)
