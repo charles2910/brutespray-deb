@@ -1,3 +1,24 @@
+brutespray (1.8-1) unstable; urgency=medium
+
+  [ Debian Janitor ]
+  * Set upstream metadata fields: Bug-Database, Bug-Submit, Repository,
+    Repository-Browse.
+
+  [ Carlos Henrique Lima Melara ]
+  * New upstream version 1.8.
+  * debian/brutespray.1.ronn: updated manpage.
+  * debian/control:
+      - Added myself as Uploader.
+      - Bumped DH level to 13.
+      - Bumped Standards-Version to 4.6.1.
+      - Ran wrap-and-sort.
+  * debian/copyright: updated packaging copyright.
+  * debian/gbp.conf: made pristine-tar true.
+  * debian/watch: removed empty line and added uscan alias for version/file
+    type.
+
+ -- Carlos Henrique Lima Melara <charlesmelara@outlook.com>  Wed, 03 Aug 2022 07:45:32 +0200
+
 brutespray (1.6.8-1) unstable; urgency=medium
 
   * New upstream version 1.6.8
