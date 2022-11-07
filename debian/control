@@ -16,6 +16,8 @@ Depends: medusa, ${misc:Depends}, ${python3:Depends}
 Recommends: nmap
 Architecture: all
 Description: Python bruteforce tool
- This Python script takes nmap GNMAP/XML output and automatically brute-forces
- services with default credentials using Medusa.
+ This Python script takes nmap GNMAP/XML output, newline separated JSON,
+ Nexpose `XML Export` output or Nessus `.nessus` exports and automatically
+ brute-forces services with default credentials using Medusa.
+ .
  BruteSpray can even find non-standard ports by using the -sV inside Nmap.
